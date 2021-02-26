@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './design.dart';
 void main() {
-  
+  runApp(Knot(),);
 }
 class Knot extends StatefulWidget{
   @override
