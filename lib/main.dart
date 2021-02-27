@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './design.dart';
+import './color.dart';
 void main() {
   runApp(Knot(),);
 }
@@ -25,9 +26,9 @@ class KnotState extends State<Knot>{
       appBar: AppBar(title: Text('knot'),),
       body: Column(children: [
       Saykat(boishak[assel]), 
-      RaisedButton(child: Text('answer A'), onPressed: anara),
-       RaisedButton(child: Text('answer B'), onPressed: anara),
-        RaisedButton(child: Text('answer C'), onPressed: anara),
+      Olive(anara),
+      Olive(anara),
+      Olive(anara),
       ],),
     ),);
 
