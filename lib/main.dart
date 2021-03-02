@@ -21,14 +21,26 @@ class KnotState extends State<Knot>{
     print(assel);
   }
   Widget build (BuildContext context){
-    var boishak=['who is she?','another lame question']; 
+    var boishak=[
+      {'question':'what is your name?',
+        'answer':['boishak','anara','assel','saykat'],
+      },
+      {'question':'what is your favorite place?',
+        'answer':['America','Canada','Australia','china'],
+      },
+      {'question':'what is your app name?',
+        'answer':['knoter','knot','tweeter','twwetify'],
+      }
+    ]; 
     return MaterialApp(home:Scaffold(
       appBar: AppBar(title: Text('knot'),),
       body: Column(children: [
-      Saykat(boishak[assel]), 
-      Olive(anara),
-      Olive(anara),
-      Olive(anara),
+      Saykat(
+        boishak[assel]['question']), 
+       ...(boishak[assel]['answer']as List <String>).map((olive){
+         return Olive(anara,olive) ;
+       } ).toList()
+      
       ],),
     ),);
 
