@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-class Olive extends StatelessWidget {
-  final Function button;
-  final String buttonText;
-   Olive(this.button,this.buttonText);
+class Output extends StatelessWidget {
+  final Function print;
+  final String reddit;
+  Output(this.print,this.reddit);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      child:RaisedButton(
-       //width: double.infinity,
-       textColor: Colors.white,
-        color: Colors.lightBlue,
-        child: Text(buttonText),
-         onPressed: button
-      ), 
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.indigo)
+        ),
+      child: Text(
+        reddit,
+        style:TextStyle(color:Colors.orange)
+      ),
+      onPressed:print ,
+      ),
+      
     );
   }
 }

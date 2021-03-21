@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import './design.dart';
-import './color.dart';
-void main() {
-  runApp(Knot(),);
+import 'package:knot/color.dart';
+import 'package:knot/design.dart';
+
+void main(){
+runApp(Knot(),);
 }
 class Knot extends StatefulWidget{
   @override
@@ -13,39 +14,40 @@ class Knot extends StatefulWidget{
 
 }
 class KnotState extends State<Knot>{
-  var assel=0;
-  void anara(){
+  final question = const[
+    {'ques':'what\'t are you doing again?',
+      'ans': ['practice','self learning','remebering','joking']
+    },
+    {'ques':'what is your favorite place?',
+        'ans':['America','Canada','Australia','china'],
+    },
+    {'ques':'what is your app name?',
+        'ans':['knoter','knot','tweeter','twwetify'],
+   },
+  ];
+  var problem=0;
+  void type(){
     setState(() {
-      assel=assel+1;
+      problem=problem+1;
+      if (problem<question.length){
+        print('Hello!Fill up more');
+
+      }else{
+        print('Finished all!');
+      }
     });
-    print(assel);
   }
   Widget build (BuildContext context){
-    var boishak=[
-      {'question':'what is your name?',
-        'answer':['boishak','anara','assel','saykat'],
-      },
-      {'question':'what is your favorite place?',
-        'answer':['America','Canada','Australia','china'],
-      },
-      {'question':'what is your app name?',
-        'answer':['knoter','knot','tweeter','twwetify'],
-      }
-    ]; 
-    return MaterialApp(home:Scaffold(
-      appBar: AppBar(title: Text('knot'),),
-      body: Column(children: [
-      Saykat(
-        boishak[assel]['question']), 
-       ...(boishak[assel]['answer']as List <String>).map((olive){
-         return Olive(anara,olive) ;
-       } ).toList()
-      
-      ],),
+    return MaterialApp(home: Scaffold(
+   appBar: AppBar(title: Text('knot'),),
+   body: problem<question.length?Column(children: [
+     Input(
+       question[problem]['ques']
+     ), 
+     ...(question[problem]['ans'] as List <String>) .map((output){
+       return Output(type, output);
+     }).toList()
+   ],): Center(child:Text('Well done!'))
     ),);
-
   }
-
-
 }
-    
