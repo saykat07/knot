@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 class Output extends StatelessWidget {
   final Function print;
-  final String reddit;
-  Output(this.print,this.reddit);
+   final String reedit;
+  Output(this.print,this.reedit);
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width:double.infinity ,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.indigo)
+       backgroundColor: MaterialStateProperty.all(Colors.yellow),
+       
         ),
-      child: Text(
-        reddit,
-        style:TextStyle(color:Colors.orange)
-      ),
-      onPressed:print ,
-      ),
+        
+        child: Text(
+          reedit,
+          style: TextStyle(color: Colors.deepPurple),
+          
+        ),
+        onPressed: print),
       
     );
   }
+
+  //void buildColor() => color;
 }

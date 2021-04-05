@@ -9,7 +9,7 @@ class Input extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: Text(
         edit,
-        style:TextStyle(fontSize: 28),
+        style: TextStyle(fontSize: 28),
         textAlign: TextAlign.center,
       ),
     );
