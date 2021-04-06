@@ -1,53 +1,56 @@
 import 'package:flutter/material.dart';
-import './design.dart';
-import './color.dart';
-void main(){
-runApp(Knot(),);
+import './organize1.dart';
+import './organize.dart';
+
+void main() {
+  runApp(_Knot());
 }
-class Knot extends StatefulWidget{
+
+class _Knot extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // 
-    return KnotState();
+    //
+    return _KnotState();
+  }
+}
+
+class _KnotState extends State<_Knot> {
+  final _question = const [
+    {
+      'ques': 'what\'s your name?',
+      'ans': ['A', 'B', 'C', 'D'],
+    },
+    {
+      'ques': 'what is your favorite place?',
+      'ans': ['America', 'Canada', 'Australia', 'china'],
+    },
+    {
+      'ques': 'what is your app name?',
+      'ans': ['knoter', 'knot', 'tweeter', 'twwetify'],
+    },
+  ];
+  var _problem = 0;
+  void _type() {
+    setState(() {
+      _problem = _problem + 1;
+    });
+    if (_problem < _question.length) {
+      print('Bingo!more question');
+    } else {
+      print('No more question');
+    }
   }
 
-}
-class KnotState extends State<Knot>{
-  final question =const[
-    {'ques':'what\'s your name?',
-      'ans':['A','B','C','D'],
-    },
-    {'ques':'what is your favorite place?',
-        'ans':['America','Canada','Australia','china'],
-    },
-    {'ques':'what is your app name?',
-        'ans':['knoter','knot','tweeter','twwetify'],
-   },
-  ];
-  var problem=0;
-  void type(){
-   setState(() {
-     problem=problem+1;
-   });
-   if(problem<question.length){
-     print('Bingo,More question!');
-   }else{
-     print('No more Question');
-   }
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Knot'),
+          ),
+          body: _problem < _question.length
+              ? Organize(type: _type, problem: _problem, question: _question)
+              :Organize1()
+              ),
+    );
   }
-Widget build (BuildContext context){
-  return MaterialApp(home:Scaffold(
-    appBar: AppBar(title: Text('Tweety'),),
-   body: problem<question.length? Column (children: [
-     Input(
-       question[problem]['ques'],
-     ),
-    ... (question[problem]['ans'] as List <String>) .map((output){
-     return Output(type, output);
-    }).toList()
-    
-   ],):Center(child: Text('well done'),)
-  ),);
-  
-}
 }
